@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev:ts": "pnpm dev & pnpm ts:watch",
+    "ts": "tsc --noEmit --incremental",
+    "ts:watch": "pnpm ts --watch"
   },
   "dependencies": {
     "react": "^18",
