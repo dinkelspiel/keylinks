@@ -14,7 +14,9 @@ const config: Config = {
         accent: '#6F799F',
         red: '#DE3D3D',
         green: '#3C7D53',
-        blue: '#3D74DE'
+        blue: '#3D74DE',
+        primary: '#BFC3D4',
+        secondary: '#121521'
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif']
