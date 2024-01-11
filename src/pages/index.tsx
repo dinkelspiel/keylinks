@@ -47,16 +47,17 @@ export default function Home() {
     <>
       <Head>
         <title>Keylinks UF</title>
-        <meta name="description" content="Checkout our cool page" key="desc" />
-        <meta property="og:title" content="Social Title for Cool Page" />
+        <meta
+          name="description"
+          content="Hemsidan för ungdomsföretaget Keylinks"
+          key="desc"
+        />
+        <meta property="og:title" content="Keylinks UF" />
         <meta
           property="og:description"
-          content="And a social description for our cool page"
+          content="Hemsidan för ungdomsföretaget Keylinks"
         />
-        <meta
-          property="og:image"
-          content="https://example.com/images/cool-page.jpg"
-        />
+        <meta property="og:image" content="/logo.png" />
         <link rel="icon" type="image/x-icon" href="/logo.png"></link>
       </Head>
       <header
