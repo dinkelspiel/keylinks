@@ -1,0 +1,11 @@
+.image {
+    transition: all;
+    transition-duration: 400ms;
+}
+
+.image:hover {
+	transform: perspective(900px) translateY(-5%) rotateX(10deg) translateZ(0);
+	box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.3);
+}

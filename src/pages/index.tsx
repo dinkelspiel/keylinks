@@ -1,33 +1,110 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Product from "@/components/Product";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import ProductImage from "@/components/ProductImage";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [windowHeight, setWindowHeight] = useState<number>(0);
+
+  const item1Ref = useRef<HTMLImageElement>(null);
+  const item2Ref = useRef<HTMLImageElement>(null);
+  const item3Ref = useRef<HTMLImageElement>(null);
+
+  let [selectedImage, setSelectedImage] = useState<number>(0);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        setScrollY(currentScrollY);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      setWindowHeight(window.innerHeight);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  });
+
   return (
-    <main className="bg-background min-h-[100dvh] text-text font-poppins">
-      <Header />
-      <div className="px-4 lg:px-[165px] pt-[150px] pb-[100px] grid grid-cols-1 lg:grid-cols-2 border-b border-accent">
-        <div></div>
-        <div className="font-semibold flex flex-col gap-8">
-          <div className="text-6xl">Keylinks: Where Elegance Meets Utility</div>
-          <div className="text-accent text-3xl">
-            Your Key to Modern Convenience and Personalized Style!
+    <>
+      <Head>
+        <title>Keylinks UF</title>
+        <meta name="description" content="Checkout our cool page" key="desc" />
+        <meta property="og:title" content="Social Title for Cool Page" />
+        <meta
+          property="og:description"
+          content="And a social description for our cool page"
+        />
+        <meta
+          property="og:image"
+          content="https://example.com/images/cool-page.jpg"
+        />
+        <link rel="icon" type="image/x-icon" href="/logo.png"></link>
+      </Head>
+      <header
+        className={`border-b-2 border-neutral-300 w-full flex items-center justify-center px-4 lg:px-24 fixed h-[100px] top-0`}
+      >
+        <div className={`uppercase font-bold text-lg`}>Keylinks</div>
+        <a
+          className="font-semibold text-sm flex-1 flex justify-end"
+          href="mailto:keylinkuf@gmail.com"
+        >
+          Contact Us
+        </a>
+      </header>
+      <main className={`bg-background text-text ${inter.className} `}>
+        <div className="px-4 lg:px-32 grid grid-cols-1 lg:grid-cols-[0.6fr,1fr] gap-8 lg:gap-36 min-h-[100dvh] pt-[128px] lg:pt-[100px]">
+          <div className={`flex items-center h-full`}>
+            <h1 className="text-6xl lg:text-[72px] font-black leading-[58px] lg:leading-[68px] uppercase text-text">
+              Where Elegance Meets Utility
+            </h1>
+          </div>
+          <div className="grid grid-cols-[repeat(2,1fr)] my-auto items-center gap-8 lg:gap-24 pb-4">
+            <ProductImage
+              imageRef={item1Ref}
+              image="/1.jpg"
+              title="KeyClip"
+              onClick={() => setSelectedImage(1)}
+              onClose={() => setSelectedImage(0)}
+              selected={selectedImage === 1}
+            />
+            <ProductImage
+              imageRef={item1Ref}
+              image="/2.jpg"
+              title="KeyRing"
+              onClick={() => setSelectedImage(2)}
+              onClose={() => setSelectedImage(0)}
+              selected={selectedImage === 2}
+            />
+            {/* <ProductImage ref={item1Ref} image="/3.jpg" title="KeyHub" /> */}
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center gap-8 border-b border-accent py-8">
-        <h2 className="font-semibold text-3xl">Our Products</h2>
-        <ul className="grid grid-cols-1 w-full px-4 lg:grid-cols-3 lg:w-max gap-4">
-          <Product name="KeyClips" />
-          <Product name="KeyRings" />
-          <Product name="KeyHub" />
-        </ul>
-      </div>
-      <Footer />
-    </main>
+        <footer
+          className={`grid grid-cols-3 px-24 items-center fixed h-[100px] w-[100dvw] bottom-0`}
+        >
+          <div className="font-semibold text-sm"></div>
+          <div className="flex justify-center gap-4"></div>
+          <div className="text-right text-sm text-neutral-600 flex items-center justify-end gap-4"></div>
+        </footer>
+      </main>
+    </>
   );
 }
