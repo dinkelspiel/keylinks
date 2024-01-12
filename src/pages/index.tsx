@@ -71,14 +71,18 @@ export default function Home() {
           Contact Us
         </a>
       </header>
-      <main className={`bg-background text-text ${inter.className} `}>
-        <div className="px-4 lg:px-32 grid grid-cols-1 lg:grid-cols-[0.6fr,1fr] gap-8 lg:gap-36 min-h-[100dvh] pt-[128px] lg:pt-[100px]">
+      <main className={`bg-background text-text ${inter.className}`}>
+        <div className="px-4 lg:px-32 grid grid-cols-1 lg:grid-cols-[0.3fr,1fr] 2xl:grid-cols-[0.6fr,1fr] gap-8 lg:gap-36 min-h-[100dvh] pt-[128px] lg:pt-[100px]">
           <div className={`flex items-center h-full`}>
-            <h1 className="text-6xl lg:text-[72px] font-black leading-[58px] lg:leading-[68px] uppercase text-text">
+            <h1 className="text-6xl lg:text-[48px] lg:leading-[52px] 2xl:text-[72px] font-black leading-[58px] 2xl:leading-[68px] uppercase text-text">
               Where Elegance Meets Utility
+              {/* <div className="hidden md:block">m</div>
+              <div className="hidden lg:block">l</div>
+              <div className="hidden xl:block">x</div>
+              <div className="hidden 2xl:block">2</div> */}
             </h1>
           </div>
-          <div className="grid grid-cols-[repeat(2,1fr)] my-auto items-center gap-8 lg:gap-24 pb-4">
+          <div className="grid grid-cols-[repeat(2,1fr)] my-auto items-center gap-8 lg:gap-12 2xl:gap-24 pb-4">
             <ProductImage
               imageRef={item1Ref}
               image="/1.jpg"
